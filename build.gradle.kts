@@ -33,6 +33,10 @@ dependencies {
     implementation("com.slack.api:slack-api-client-kotlin-extension:$slack_version")
 }
 
+tasks.register("stage") {
+    dependsOn("shadowJar")
+}
+
 tasks {
     shadowJar {
         manifest.attributes["Main-Class"] = "com.bnova.ApplicationKt"
