@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bnova.ApplicationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-02T06:35:07" hostname="spacegrey.home" time="0.294">
+  <properties/>
+  <testcase name="testRoot" classname="com.bnova.ApplicationTest" time="0.294"/>
+  <system-out><![CDATA[2021-08-02 08:35:07.403 [Test worker] INFO  ktor.test - Autoreload is disabled because the development mode is off.
+2021-08-02 08:35:07.409 [Test worker] INFO  ktor.test - Application started in 0.042 seconds.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

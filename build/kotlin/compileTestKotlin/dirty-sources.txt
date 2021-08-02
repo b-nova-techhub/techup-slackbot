@@ -1,0 +1,1 @@
+/Users/rschneider/Development/b-nova-techub/slackbot/src/test/kotlin/com/bnova/ApplicationTest.kt
