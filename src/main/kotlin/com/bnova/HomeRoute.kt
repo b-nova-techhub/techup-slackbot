@@ -11,7 +11,7 @@ fun Routing.homeRoute() {
         val slack = Slack.getInstance()
         val response = slack.methods(token).chatPostMessage {
             it.channel("#sandbox")
-                .text("Hello :wave:")
+                .text("Hello b-nova! :wave:")
         }
 
         call.respondText("Response is: $response")
