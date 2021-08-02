@@ -6,19 +6,31 @@ val slack_version = "1.9.0"
 plugins {
     application
     kotlin("jvm") version "1.5.21"
-    id("com.github.johnrengelman.shadow") version "7.0.0"
 }
 
 group = "com.bnova"
-version = "1.0.0"
+version = "0.0.1"
 application {
     mainClass.set("com.bnova.ApplicationKt")
 }
 
+tasks {
+    register("fatJar", Jar::class.java) {
+        archiveClassifier.set("all")
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        manifest.attributes["Main-Class"] = "com.bnova.ApplicationKt"
+        println("main-class: ${manifest.attributes["Main-Class"]}")
+        from(configurations.runtimeClasspath.get()
+            .onEach { println("add from dependencies: ${it.name}") }
+            .map { if (it.isDirectory) it else zipTree(it) })
+        val sourcesMain = sourceSets.main.get()
+        sourcesMain.allSource.forEach { println("add from sources: ${it.name}") }
+        from(sourcesMain.output)
+    }
+}
 
 repositories {
     mavenCentral()
-    jcenter()
 }
 
 dependencies {
@@ -31,11 +43,4 @@ dependencies {
     implementation("com.slack.api:slack-api-client:$slack_version")
     implementation("com.slack.api:slack-api-model-kotlin-extension:$slack_version")
     implementation("com.slack.api:slack-api-client-kotlin-extension:$slack_version")
-}
-
-tasks {
-    shadowJar {
-        manifest.attributes["Main-Class"] = "com.bnova.ApplicationKt"
-        archiveClassifier.set("")
-    }
 }
