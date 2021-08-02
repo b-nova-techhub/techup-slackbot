@@ -1,7 +1,7 @@
 val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
-val slack_version = "1.9.0"
+val slack_version: String by project
 
 plugins {
     application
@@ -18,7 +18,6 @@ application {
 
 repositories {
     mavenCentral()
-    jcenter()
 }
 
 dependencies {
